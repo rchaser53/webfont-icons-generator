@@ -27,3 +27,11 @@
   /* 初期化のみ*/
   font-variant: normal;
 }
+
+.svgIcon {
+  display:block;
+  width:30px;
+  height:30px;
+  background-image: url('projector.svg');
+  background-size: 100%;
+}
