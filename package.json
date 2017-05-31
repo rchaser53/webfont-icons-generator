@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "svg2ttf": "^4.0.3",
+    "svgicons2svgfont": "^5.0.0"
+  }
+}
