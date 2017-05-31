@@ -3,6 +3,7 @@
   width: 30px;
   height: 30px;
   color: red;
+  /* style | variant | weight | stretch | size/line-height | family */
   font: normal normal normal 14px/1 FontAwesome;
 }
 
@@ -16,4 +17,13 @@
 
 .iconC {
 
+}
+
+.fontTestSmall {
+  font-variant: small-caps;
+}
+
+.fontTestLarge {
+  /* 初期化のみ*/
+  font-variant: normal;
 }
