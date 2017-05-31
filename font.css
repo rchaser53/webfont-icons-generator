@@ -1,0 +1,19 @@
+.iconA {
+  display: block;
+  width: 30px;
+  height: 30px;
+  color: red;
+  font: normal normal normal 14px/1 FontAwesome;
+}
+
+.iconA:before {
+  content: "\f2c4";
+}
+
+.iconB {
+
+}
+
+.iconC {
+
+}
