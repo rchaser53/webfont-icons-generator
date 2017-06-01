@@ -1,6 +1,10 @@
 {
+  "scripts": {
+    "ttf2woff": "ttf2woff"
+  },
   "dependencies": {
     "svg2ttf": "^4.0.3",
-    "svgicons2svgfont": "^5.0.0"
+    "svgicons2svgfont": "^5.0.0",
+    "ttf2woff": "^2.0.1"
   }
 }

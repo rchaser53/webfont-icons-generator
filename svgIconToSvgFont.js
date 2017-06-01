@@ -1,13 +1,11 @@
 var svgicons2svgfont = require('svgicons2svgfont');
 var fs = require('fs');
 var fontStream = svgicons2svgfont({
-  fontName: 'hello',
-  fixedWidth: 30,
-  height: 20
+  fontName: 'hello'
 });
  
 // Setting the font destination 
-fontStream.pipe(fs.createWriteStream('hello.svg'))
+fontStream.pipe(fs.createWriteStream('helloIcon.svg'))
   .on('finish',function() {
     console.log('Font successfully created!')
   })
@@ -16,10 +14,9 @@ fontStream.pipe(fs.createWriteStream('hello.svg'))
   });
  
 // Writing glyphs 
-var glyph1 = fs.createReadStream('restaurant.svg');
+var glyph1 = fs.createReadStream('projector.svg');
 glyph1.metadata = {
-  //unicode: ['\uE001\uE002'],
-  unicode: ['\uE001'],
+  unicode: ['\ue001'],
   name: 'icon1'
 };
 fontStream.write(glyph1);

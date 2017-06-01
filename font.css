@@ -6,6 +6,22 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'hello';
+  /*src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');*/
+  src: url('hello.woff') format('woff');
+  /*src: url('helloIcon.ttf') format('ttf');*/
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ttfIcon {
+  font: normal normal normal 14px/1 hello;
+}
+.ttfIcon:before {
+  content: "\e001";
+}
+
 .iconA {
   display: block;
   width: 30px;
