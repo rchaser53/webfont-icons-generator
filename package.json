@@ -1,10 +1,12 @@
 {
   "scripts": {
-    "ttf2woff": "ttf2woff"
+    "ttf2woff": "ttf2woff",
+    "ttf2eot": "ttf2eot"
   },
   "dependencies": {
     "svg2ttf": "^4.0.3",
     "svgicons2svgfont": "^5.0.0",
+    "ttf2eot": "^2.0.0",
     "ttf2woff": "^2.0.1"
   }
 }
