@@ -1,3 +1,5 @@
 awesome
 node_modules
 bootstrap
+npm-debug.log*
+.DS_Store
