@@ -7,6 +7,7 @@
     "svg2ttf": "^4.0.3",
     "svgicons2svgfont": "^5.0.0",
     "ttf2eot": "^2.0.0",
+    "ttf2woff2": "^2.0.3",
     "ttf2woff": "^2.0.1"
   }
 }
