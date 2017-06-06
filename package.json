@@ -3,14 +3,20 @@
     "ttf2woff": "ttf2woff",
     "ttf2eot": "ttf2eot",
     "electron": "electron",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "start": "webpack-dev-server"
   },
   "dependencies": {
+    "@types/node": "^7.0.28",
+    "electron": "^1.6.10",
     "svg2ttf": "^4.0.3",
     "svgicons2svgfont": "^5.0.0",
+    "ts-loader": "^2.1.0",
     "ttf2eot": "^2.0.0",
+    "ttf2woff": "^2.0.1",
     "ttf2woff2": "^2.0.3",
     "typescript": "^2.3.4",
-    "ttf2woff": "^2.0.1"
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   }
 }

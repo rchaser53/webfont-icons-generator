@@ -1,4 +1,5 @@
-const { app, BrowserWindow } = require("electron");
+import * as electron from "electron";
+import { app, BrowserWindow } from "electron";
 let win;
 
 function createWindow() {
