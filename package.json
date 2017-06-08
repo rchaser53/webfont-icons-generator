@@ -4,6 +4,7 @@
     "ttf2eot": "ttf2eot",
     "electron": "electron",
     "tsc": "tsc",
+    "tscArg": "tsc entryCli --outDir distForCli",
     "start": "webpack-dev-server"
   },
   "dependencies": {
@@ -17,6 +18,10 @@
     "ttf2woff2": "^2.0.3",
     "typescript": "^2.3.4",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "write-file-webpack-plugin": "^4.0.2"
+  },
+  "devDependencies": {
+    "argparse": "^1.0.9"
   }
 }
