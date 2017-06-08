@@ -6,5 +6,12 @@ const parser = new ArgParse.ArgumentParser({
   description: 'Argparse example'
 })
 
-const args = parser.parseArgs();
-// console.dir(args);
+parser.addArgument(
+  [ '-t', '--type' ],
+)
+
+const args = parser.parseArgs()
+
+const parseType = (args.t || args.type)
+
+console.log(`you typed type ${parseType}!`)
