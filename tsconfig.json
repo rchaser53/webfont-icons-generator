@@ -4,11 +4,9 @@
     "removeComments": false,
     "noLib": false,
     "target": "es2015",
-    "allowJs":false,
-    "jsx": "react",
+    "allowJs": true,
     "module": "commonjs",
     "experimentalDecorators": true,
-    "declaration": true,
     "strictNullChecks": true,
     "noUnusedLocals": false,
     "noEmit": false,
@@ -16,6 +14,7 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "forceConsistentCasingInFileNames": true,
+    "outDir": "distForCli",
     "lib":[
       "es2015",
       "es2016",
@@ -29,8 +28,6 @@
     "node_modules/**/*.js"
   ],
   "include":[
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "css/**/*.ts"
+    "srcCli/**/*.ts"
   ]
 }
