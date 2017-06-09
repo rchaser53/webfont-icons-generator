@@ -1,5 +1,5 @@
-awesome
 node_modules
-bootstrap
 npm-debug.log*
+dist
+distForCli
 .DS_Store

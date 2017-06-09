@@ -1,17 +1,6 @@
 @font-face {
-  font-family: 'geniconsfont';
-  /*src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');*/
-  src: url('geniconsfont/geniconsfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'hello';
-  /*src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');*/
-  /*src: url('hello.woff') format('woff');*/
   src: url('hello.woff2') format('woff2');
-  /*src: url('helloIcon.ttf') format('ttf');*/
   font-weight: normal;
   font-style: normal;
 }

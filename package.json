@@ -4,7 +4,7 @@
     "ttf2eot": "ttf2eot",
     "electron": "electron",
     "tsc": "tsc",
-    "tscArg": "tsc entryCli --outDir distForCli",
+    "tscCli": "tsc srcCli/* --outDir distForCli --allowjs" ,
     "start": "webpack-dev-server"
   },
   "dependencies": {
