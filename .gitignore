@@ -3,3 +3,8 @@ npm-debug.log*
 dist
 distForCli
 .DS_Store
+*.map
+*icon.svg
+*icon.ttf
+*icon.woff
+*icon.woff2
