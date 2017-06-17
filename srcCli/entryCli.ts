@@ -1,6 +1,9 @@
 import * as ArgParse from 'argparse';
+
 import svgIconToSvgFont from './svgIconToSvgFont'
 import svgFontsToTtf from './svgFontsToTtf'
+import ttfToWoff from './ttfToWoff'
+import ttfToWoff2 from './ttfToWoff2'
 
 const parser = new ArgParse.ArgumentParser({
   version: '0.0.1',
@@ -27,6 +30,8 @@ const createFonts = async () => {
   try {
     await svgIconToSvgFont(fileName, fileName, '\ue001');
     await svgFontsToTtf(fileName, fileName);
+    await ttfToWoff(fileName);
+    await ttfToWoff2(fileName);
   } catch (error) {
     throw new Error(error);
   }
