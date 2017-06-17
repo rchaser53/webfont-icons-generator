@@ -1,7 +1,7 @@
-import * as svgicons2svgfont from 'svgicons2svgfont';
 import * as fs from 'fs';
+import * as svgicons2svgfont from 'svgicons2svgfont';
 
-export default (fileName: string, fontName: string, unicode: string): any => {
+export default (fileName: string, fontName: string, unicode: string): Promise<{}> => {
   return new Promise((resolve, reject) => {
     const fontStream = svgicons2svgfont({ fontName });
 
@@ -16,10 +16,9 @@ export default (fileName: string, fontName: string, unicode: string): any => {
     const glyph1 : any = fs.createReadStream(`${fileName}.svg`);
     glyph1.metadata = {
       unicode: [unicode],
-      name: 'icon1'
+      name: fileName
     };
     fontStream.write(glyph1);
-    
     fontStream.end();
   })  
 }

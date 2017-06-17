@@ -23,7 +23,13 @@ const fileName = (args.f || args.file)
 
 // TODO need to implement error handling for argument
 
-svgIconToSvgFont(fileName, fileName, '\ue001')
-  .then((ret) => {
-    svgFontsToTtf(fileName, fileName)
-  })
+const createFonts = async () => {
+  try {
+    await svgIconToSvgFont(fileName, fileName, '\ue001');
+    await svgFontsToTtf(fileName, fileName);
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+createFonts();
