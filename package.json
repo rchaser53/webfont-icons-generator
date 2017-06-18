@@ -1,8 +1,8 @@
 {
   "scripts": {
     "electron": "electron",
-    "tsc": "tsc",
-    "tscCli": "tsc -p .",
+    "createTsJson": "node --harmony scripts/createTsconfig.js",
+    "tscCli": "tsc -p ./tsconfig.cli.json",
     "tscCliW": "tsc -w -p .",
     "start": "webpack-dev-server"
   },

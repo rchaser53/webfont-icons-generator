@@ -8,3 +8,5 @@ distForCli
 *icon.ttf
 *icon.woff
 *icon.woff2
+tsconfig.*.json
+!tsconfig.base.json

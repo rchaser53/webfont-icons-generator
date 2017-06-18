@@ -3,7 +3,7 @@
     "noImplicitAny": false,
     "removeComments": false,
     "noLib": false,
-    "target": "es3",
+    "target": "es2015",
     "allowJs": true,
     "module": "commonjs",
     "experimentalDecorators": true,
@@ -14,7 +14,6 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "distForCli",
     "lib":[
       "es2015",
       "es2016",
@@ -26,8 +25,5 @@
   "exclude":[
     "node_modules/**/*.ts",
     "node_modules/**/*.js"
-  ],
-  "include":[
-    "srcCli/**/*.ts"
   ]
 }
