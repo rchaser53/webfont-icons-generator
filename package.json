@@ -4,6 +4,7 @@
     "createTsJson": "node --harmony scripts/createTsconfig.js",
     "tscCli": "tsc -p ./tsconfig.cli.json",
     "tscCliW": "tsc -w -p .",
+    "test": "npm run tscCli && ava",
     "start": "webpack-dev-server"
   },
   "dependencies": {
@@ -17,6 +18,7 @@
   "devDependencies": {
     "@types/node": "^7.0.28",
     "argparse": "^1.0.9",
+    "ava": "^0.19.1",
     "ts-loader": "^2.1.0",
     "tslint": "^5.4.3",
     "typescript": "^2.3.4",
