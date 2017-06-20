@@ -10,7 +10,7 @@ export default (fileName: string, fontName: string, unicode: string): Promise<{}
         resolve()
       })
       .on('error', (err) => {
-        console.error(err)
+        reject(err)
       })
 
     const glyph1: any = fs.createReadStream(`${fileName}.svg`)

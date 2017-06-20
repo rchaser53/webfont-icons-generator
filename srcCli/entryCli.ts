@@ -42,8 +42,8 @@ export const createFonts = async (originalFileName: string, pwd: string) => {
     await svgFontsToTtf(relativeFilePath, relativeFilePath)
     await ttfToWoff(relativeFilePath)
     await ttfToWoff2(relativeFilePath)
-  } catch (error) {
-    throw new Error(error)
+  } catch (err) {
+    throw new Error(err)
   }
 }
 
