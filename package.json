@@ -25,5 +25,12 @@
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5",
     "write-file-webpack-plugin": "^4.0.2"
+  },
+  "ava": {
+    "files": [
+      "distForCli/__tests__/**/*.js"
+    ],
+    "concurrency": 5,
+    "powerAssert": true
   }
 }

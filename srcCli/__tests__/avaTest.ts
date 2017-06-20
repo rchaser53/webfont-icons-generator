@@ -1,9 +1,14 @@
 import test from 'ava'
+import * as fs from 'fs'
+import * as path from 'path'
 
-async function fn() {
-  return Promise.resolve('foo')
-}
+import ttfToWoff from '../ttfToWoff'
 
 test(async (t) => {
-  t.is(await fn(), 'foo')
+  try {
+    await ttfToWoff('hoge')
+  }
+  catch (err) {
+    t.is(err.message, `Error: ENOENT: no such file or directory, open 'hogeIcon.ttf'`)
+  }
 })
