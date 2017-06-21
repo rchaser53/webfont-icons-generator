@@ -27,7 +27,8 @@ export const createFonts = async (originalFileName: string, pwd: string, fontNam
     pwd,
     fileName,
     fontName,
-    fontCode: String('\\ue' + fontCode),
+    originalFileName,
+    fontCode: String.fromCharCode(parseInt(fontCode)),
     dist
   }
 

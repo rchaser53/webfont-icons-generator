@@ -1,15 +1,15 @@
 @font-face {
-  font-family: 'hello';
-  src: url('hello.woff2') format('woff2');
+  font-family: 'originalFont';
+  src: url('../fonts/projectorIcon.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
 .ttfIcon {
-  font: normal normal normal 14px/1 hello;
+  font: normal normal normal 14px/1 originalFont;
 }
 .ttfIcon:before {
-  content: "\e001";
+  content: "\0001";
 }
 
 .iconA {

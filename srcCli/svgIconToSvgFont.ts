@@ -4,6 +4,7 @@ import * as svgicons2svgfont from 'svgicons2svgfont'
 export interface FontOptions {
   pwd: string,
   fileName: string,
+  originalFileName: string,
   fontName?: string,
   fontCode: string,
   dist: string
@@ -12,7 +13,7 @@ export interface FontOptions {
 export default (options: FontOptions): Promise<{}> => {
   const {
     pwd, fileName, fontName,
-    fontCode, dist
+    originalFileName, fontCode, dist
   } = options
   return new Promise<{}>((resolve, reject) => {
     const fontStream = svgicons2svgfont({ fontName })
@@ -25,7 +26,7 @@ export default (options: FontOptions): Promise<{}> => {
         reject(err)
       })
 
-    const glyph1: any = fs.createReadStream(`${pwd}/${fileName}.svg`)
+    const glyph1: any = fs.createReadStream(`${pwd}/${originalFileName}.svg`)
     glyph1.metadata = {
       unicode: [fontCode],
       name: fileName
