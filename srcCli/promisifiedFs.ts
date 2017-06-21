@@ -1,14 +1,15 @@
 import * as fs from 'fs'
 
 export interface Options {
-  encoding: string | null
+  encoding: string | null,
+  flag?: string
 }
 
 export const readFile = <T>(fileName: string, options: Options = {
   encoding: 'utf8'
 }): Promise<T> => {
-  return new Promise((resolve, reject) => {
-    fs.readFile(fileName, options, (err, data) => {
+  return new Promise<T>((resolve, reject) => {
+    fs.readFile(fileName, options, (err, data: any) => {
       if (err) reject(err)
       resolve(data)
     })
