@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@types/argparse": "^1.0.30",
+    "app-root-dir": "^1.0.2",
     "electron": "^1.6.10",
     "svg2ttf": "^4.0.3",
     "svgicons2svgfont": "^5.0.0",

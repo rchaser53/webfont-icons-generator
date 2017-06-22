@@ -8,6 +8,13 @@ export interface FontInput {
   fontCode: string
 }
 
+export interface CreateFontsOptions {
+  originalFileName: string,
+  pwd: string,
+  fontName: string,
+  dist: string
+}
+
 export const createFontInput = (originalFileName: string): FontInput => {
   const splitedNames = originalFileName.split('_')
   return {
@@ -16,7 +23,11 @@ export const createFontInput = (originalFileName: string): FontInput => {
   }
 }
 
-export const createFonts = async (originalFileName: string, pwd: string, fontName: string, dist: string) => {
+export const createFonts = async (createFontOptions: CreateFontsOptions) => {
+  const {
+    originalFileName, pwd, fontName, dist
+  } = createFontOptions
+
   const {
     fileName, fontCode
   } = createFontInput(originalFileName)
@@ -43,5 +54,3 @@ export const createFonts = async (originalFileName: string, pwd: string, fontNam
 }
 
 export default createFonts
-
-createFonts('001_projector', './img', 'originalFont', './fonts')
