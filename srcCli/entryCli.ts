@@ -1,8 +1,11 @@
+import * as fs from 'fs'
 import * as ArgParse from 'argparse'
 
 import {
   addArgument,
-  getConfigData
+  getConfigData,
+  getFiles,
+  divideAbsolutePath
 } from './utils'
 import createFonts from './createFonts'
 
@@ -31,13 +34,33 @@ export const entryCli = async (config: string): Promise<void> => {
     const { src, pwd, fontName, dist } = await getConfigData(config)
     // TODO need to implement for the case that src is glob
 
-    await createFonts({
-      originalFileName: src,
-      pwd, fontName, dist
+    const files = await getFiles(src)
+    const originalFileNames = files.map((file) => {
+      const {
+        originalFileName, extension, pwd
+      } = divideAbsolutePath(file)
+
+      // TODO convert other extension
+      if (extension !== 'svg') throw new Error('cannot convert except svg extension')
+      return originalFileName
     })
+
+    originalFileNames.forEach(async (originalFileName) => {
+      try {
+        await createFonts({
+          originalFileName, pwd, fontName, dist
+        })
+      } catch (err) {
+        throw new Error(err)
+      }
+    })
+
   } catch (err) {
     throw new Error(err)
   }
 }
 
 entryCli(config)
+  .catch((err) => {
+    console.error(err)
+  })
