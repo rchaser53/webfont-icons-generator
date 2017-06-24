@@ -1,24 +1,34 @@
 import * as fs from 'fs'
 import * as svgicons2svgfont from 'svgicons2svgfont'
 
+export interface FontInput {
+  fileName: string,
+  fontCode: string
+}
+
 export interface FontOptions {
   pwd: string,
-  fileName: string,
-  originalFileName: string,
-  fontName?: string,
-  fontCode: string,
+  originalFileNames: string[],
+  fontName: string,
   dist: string
 }
 
-export default (options: FontOptions): Promise<{}> => {
-  const {
-    pwd, fileName, fontName,
-    originalFileName, fontCode, dist
-  } = options
-  return new Promise<{}>((resolve, reject) => {
-    const fontStream = svgicons2svgfont({ fontName })
+export const createFontInput = (originalFileName: string): FontInput => {
+  const splitedNames = originalFileName.split('_')
+  return {
+    fontCode: String.fromCharCode(parseInt(splitedNames[0])),
+    fileName: splitedNames[1]
+  }
+}
 
-    fontStream.pipe(fs.createWriteStream(`${dist}/${fileName}Icon.svg`))
+export default (options: FontOptions): Promise<{}> => {
+  return new Promise<{}>((resolve, reject) => {
+    const {
+      originalFileNames, fontName, dist, pwd
+    } = options
+
+    const fontStream = svgicons2svgfont({ fontName })
+    fontStream.pipe(fs.createWriteStream(`${dist}/${fontName}Icon.svg`))
       .on('finish', () => {
         resolve()
       })
@@ -26,12 +36,19 @@ export default (options: FontOptions): Promise<{}> => {
         reject(err)
       })
 
-    const glyph1: any = fs.createReadStream(`${pwd}/${originalFileName}.svg`)
-    glyph1.metadata = {
-      unicode: [fontCode],
-      name: fileName
-    }
-    fontStream.write(glyph1)
+    originalFileNames.forEach((originalFileName) => {
+      const {
+        fileName, fontCode
+      } = createFontInput(originalFileName)
+
+      const glyph: any = fs.createReadStream(`${pwd}/${originalFileName}.svg`)
+      glyph.metadata = {
+        unicode: [fontCode],
+        name: fileName
+      }
+      fontStream.write(glyph)
+    })
+
     fontStream.end()
   })
 }

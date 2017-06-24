@@ -1,13 +1,13 @@
 import * as fs from 'fs'
 import * as ArgParse from 'argparse'
 
+import createFonts from './createFonts'
 import {
   addArgument,
   getConfigData,
   getFiles,
   divideAbsolutePath
 } from './utils'
-import createFonts from './createFonts'
 
 const parser = new ArgParse.ArgumentParser({
   version: '0.0.1',
@@ -31,7 +31,7 @@ const config = (args.c || args.config)
 
 export const entryCli = async (config: string): Promise<void> => {
   try {
-    const { src, pwd, fontName, dist } = await getConfigData(config)
+    const { pwd, src, fontName, dist } = await getConfigData(config)
     // TODO need to implement for the case that src is glob
 
     const files = await getFiles(src)
@@ -45,14 +45,8 @@ export const entryCli = async (config: string): Promise<void> => {
       return originalFileName
     })
 
-    originalFileNames.forEach(async (originalFileName) => {
-      try {
-        await createFonts({
-          originalFileName, pwd, fontName, dist
-        })
-      } catch (err) {
-        throw new Error(err)
-      }
+    await createFonts({
+      originalFileNames, pwd, fontName, dist
     })
 
   } catch (err) {
