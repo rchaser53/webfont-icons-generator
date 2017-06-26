@@ -1,4 +1,4 @@
-import * as fs from 'fs'
+import * as fs from 'graceful-fs'
 import * as svgicons2svgfont from 'svgicons2svgfont'
 
 export interface FontInput {
@@ -28,6 +28,7 @@ export default (options: FontOptions): Promise<{}> => {
     } = options
 
     const fontStream = svgicons2svgfont({ fontName })
+
     fontStream.pipe(fs.createWriteStream(`${dist}/${fontName}Icon.svg`))
       .on('finish', () => {
         resolve()

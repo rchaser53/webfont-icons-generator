@@ -1,4 +1,4 @@
-import * as fs from 'fs'
+import * as fs from 'graceful-fs'
 
 export interface Options {
   encoding: string | null,
