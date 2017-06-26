@@ -30,8 +30,11 @@ export const getConfigData = (configPath: string): Promise<FontConfig> => {
   const actualPath = (configPath === null) ? './font.config.json' : configPath
   return new Promise((resolve, reject) => {
     fs.readFile(path.resolve(rootDir, actualPath), 'utf8', (err, data) => {
-      if (err) reject(err)
-      resolve(JSON.parse(data))
+      if (err) {
+        reject(err)
+      } else {
+        resolve(JSON.parse(data))
+      }
     })
   })
 }
