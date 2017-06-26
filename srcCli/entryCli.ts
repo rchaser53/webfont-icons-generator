@@ -1,9 +1,9 @@
-import * as fs from 'fs'
 import * as ArgParse from 'argparse'
 
 import createFonts from './createFonts'
 import {
   addArgument,
+  createDistDirectory,
   getConfigData,
   getFiles,
   divideAbsolutePath
@@ -44,6 +44,8 @@ export const entryCli = async (config: string): Promise<void> => {
       if (extension !== 'svg') throw new Error('cannot convert except svg extension')
       return originalFileName
     })
+
+    await createDistDirectory(dist)
 
     await createFonts({
       originalFileNames, pwd, fontName, dist

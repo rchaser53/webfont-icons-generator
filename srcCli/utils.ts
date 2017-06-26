@@ -18,6 +18,23 @@ export interface AbsoluteFilePathData {
   extension: string
 }
 
+export const createDistDirectory = (distPath: string): Promise<{}> => {
+  return new Promise((resolve, reject) => {
+    const absoluteDistPath = `${rootDir}/${distPath}`
+    if (fs.existsSync(absoluteDistPath) === false) {
+      fs.mkdir(absoluteDistPath, (err) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve()
+        }
+      })
+    } else {
+      resolve()
+    }
+  })
+}
+
 export const addArgument = (parser, argumentTuples: [string, string][]) => {
   argumentTuples.forEach((argumentTuple) => {
     parser.addArgument(argumentTuple)
