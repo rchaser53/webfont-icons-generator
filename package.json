@@ -1,15 +1,14 @@
 {
+  "name": "webfonts-changer",
+  "bin":  "dist/entryCli.js",
+  "main": "dist/createFonts.js",
   "scripts": {
-    "electron": "electron",
-    "createTsJson": "node --harmony scripts/createTsconfig.js",
-    "tscCli": "tsc -p ./tsconfig.cli.json",
-    "tscCliW": "tsc -w -p .",
-    "test": "npm run tscCli && ava",
-    "start": "webpack-dev-server"
+    "tsc": "tsc -p .",
+    "test": "npm run tsc && ava",
+    "prepublish": "npm run test"
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
-    "electron": "^1.6.10",
     "glob": "^7.1.2",
     "svg2ttf": "^4.0.3",
     "svgicons2svgfont": "^5.0.0",
@@ -26,14 +25,11 @@
     "graceful-fs": "^4.1.11",
     "ts-loader": "^2.1.0",
     "tslint": "^5.4.3",
-    "typescript": "^2.3.4",
-    "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5",
-    "write-file-webpack-plugin": "^4.0.2"
+    "typescript": "^2.3.4"
   },
   "ava": {
     "files": [
-      "distForCli/__tests__/**/*.js"
+      "dist/__tests__/**/*.js"
     ],
     "concurrency": 5,
     "powerAssert": true

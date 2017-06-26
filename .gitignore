@@ -1,12 +1,6 @@
 node_modules
+img*
 npm-debug.log*
 dist
-distForCli
+fonts
 .DS_Store
-*.map
-*icon.svg
-*icon.ttf
-*icon.woff
-*icon.woff2
-tsconfig.*.json
-!tsconfig.base.json

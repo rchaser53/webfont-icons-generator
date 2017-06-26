@@ -1,0 +1,29 @@
+{
+	"compilerOptions": {
+		"noImplicitAny": false,
+		"removeComments": false,
+		"noLib": false,
+		"target": "es2015",
+		"allowJs": true,
+		"module": "commonjs",
+		"experimentalDecorators": true,
+		"strictNullChecks": true,
+		"noUnusedLocals": false,
+		"noEmit": false,
+		"inlineSourceMap": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"forceConsistentCasingInFileNames": true,
+		"lib": [
+			"es2015",
+			"es2016",
+			"dom",
+			"es2017.object"
+		],
+		"outDir": "./dist"
+	},
+	"compileOnSave": false,
+	"include": [
+		"./src"
+	]
+}
