@@ -28,7 +28,7 @@ export default (options: FontOptions): Promise<{}> => {
     } = options
 
     const fontStream = svgicons2svgfont({
-                        fontName,
+                        fontName, normalize: true, fontHeight: 1000,
                         log: (message: string) => {
                           if (message !== 'Font created') console.log(message)
                         }
