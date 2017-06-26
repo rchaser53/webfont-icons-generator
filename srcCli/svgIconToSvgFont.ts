@@ -27,7 +27,12 @@ export default (options: FontOptions): Promise<{}> => {
       originalFileNames, fontName, dist, pwd
     } = options
 
-    const fontStream = svgicons2svgfont({ fontName })
+    const fontStream = svgicons2svgfont({
+                        fontName,
+                        log: (message: string) => {
+                          if (message !== 'Font created') console.log(message)
+                        }
+                      })
 
     fontStream.pipe(fs.createWriteStream(`${dist}/${fontName}Icon.svg`))
       .on('finish', () => {
