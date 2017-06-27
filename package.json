@@ -1,11 +1,15 @@
 {
-  "name": "webfonts-changer",
-  "bin":  "dist/entryCli.js",
+  "version": "0.0.3",
+  "user": "rchaser53",
+  "name": "webfont-icons-generator",
+  "bin": {
+    "webfont-icons-generator": "dist/entryCli.js"
+  },
   "main": "dist/createFonts.js",
   "scripts": {
     "tsc": "tsc -p .",
     "test": "npm run tsc && ava",
-    "prepublish": "npm run test"
+    "prepublish": "npm run tsc"
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
@@ -33,5 +37,20 @@
     ],
     "concurrency": 5,
     "powerAssert": true
-  }
+  },
+  "description": "easy webfont icon generator",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rchaser53/fontIconPlayground.git"
+  },
+  "keywords": [
+    "typescript",
+    "webfont"
+  ],
+  "author": "rchaser53",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rchaser53/fontIconPlayground/issues"
+  },
+  "homepage": "https://github.com/rchaser53/fontIconPlayground#readme"
 }
