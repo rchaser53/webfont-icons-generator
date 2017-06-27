@@ -2,10 +2,13 @@
   "version": "0.0.3",
   "user": "rchaser53",
   "name": "webfont-icons-generator",
-  "bin": {
-    "webfont-icons-generator": "dist/entryCli.js"
+  "directories": {
+    "lib": "lib"
   },
-  "main": "dist/createFonts.js",
+  "bin": {
+    "webfont-icons-generator": "lib/index.js"
+  },
+  "main": "lib/index.js",
   "scripts": {
     "tsc": "tsc -p .",
     "test": "npm run tsc && ava",

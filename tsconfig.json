@@ -20,7 +20,7 @@
 			"dom",
 			"es2017.object"
 		],
-		"outDir": "./dist"
+		"outDir": "./lib"
 	},
 	"compileOnSave": false,
 	"include": [

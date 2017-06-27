@@ -1,6 +1,6 @@
 node_modules
 img*
 npm-debug.log*
-dist
+lib/**/*.js
 fonts
 .DS_Store
