@@ -1,5 +1,5 @@
 {
-  "version": "0.0.5",
+  "version": "0.0.6",
   "user": "rchaser53",
   "name": "webfont-icons-generator",
   "directories": {
@@ -12,7 +12,7 @@
   "scripts": {
     "tsc": "tsc -p .",
     "test": "npm run tsc && ava",
-    "prepublish": "npm run tsc && npm run addBinFile",
+    "prepare": "npm run tsc && npm run addBinFile",
     "addBinFile": "node scripts/addBinFile.js"
   },
   "dependencies": {
