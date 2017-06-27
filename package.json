@@ -1,18 +1,19 @@
 {
-  "version": "0.0.4",
+  "version": "0.0.5",
   "user": "rchaser53",
   "name": "webfont-icons-generator",
   "directories": {
     "lib": "lib"
   },
   "bin": {
-    "webfont-icons-generator": "lib/index.js"
+    "webfont-icons-generator": "lib/webfont-icons-generator.js"
   },
   "main": "lib/index.js",
   "scripts": {
     "tsc": "tsc -p .",
     "test": "npm run tsc && ava",
-    "prepublish": "npm run tsc"
+    "prepublish": "npm run tsc && npm run addBinFile",
+    "addBinFile": "node scripts/addBinFile.js"
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
