@@ -21,6 +21,8 @@ export const createFonts = async (createFontOptions: CreateFontsOptions) => {
     await svgFontsToTtf(relativeDistPath, relativeDistPath)
     await ttfToWoff(relativeDistPath)
     await ttfToWoff2(relativeDistPath)
+
+    console.log('webfonts are created')
   } catch (err) {
     throw new Error(err)
   }
