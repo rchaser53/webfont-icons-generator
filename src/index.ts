@@ -9,30 +9,18 @@ import {
   divideAbsolutePath
 } from './utils'
 
-const parser = new ArgParse.ArgumentParser({
-  version: '0.0.1',
-  addHelp: true,
-  description: 'Argparse example'
-})
+const parser = new ArgParse.ArgumentParser({})
 
 addArgument(parser, [
-  [ '-t', '--type' ],
-  [ '-f', '--file'],
   [ '-c', '--config']
 ])
 
 const args = parser.parseArgs()
-
-const parseType = (args.t || args.type)
-const fileName = (args.f || args.file)
 const config = (args.c || args.config)
-
-// TODO need to implement error handling for argument
 
 export const entryCli = async (config: string): Promise<void> => {
   try {
     const { pwd, src, fontName, dist } = await getConfigData(config)
-    // TODO need to implement for the case that src is glob
 
     const files = await getFiles(src)
     const originalFileNames = files.map((file) => {
