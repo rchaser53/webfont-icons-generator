@@ -16,8 +16,10 @@
     "addBinFile": "node scripts/addBinFile.js"
   },
   "dependencies": {
+    "argparse": "^1.0.9",
     "app-root-dir": "^1.0.2",
     "glob": "^7.1.2",
+    "graceful-fs": "^4.1.11",
     "svg2ttf": "^4.0.3",
     "svgicons2svgfont": "^5.0.0",
     "ttf2eot": "^2.0.0",
@@ -28,9 +30,7 @@
     "@types/argparse": "^1.0.30",
     "@types/glob": "^5.0.30",
     "@types/node": "^7.0.28",
-    "argparse": "^1.0.9",
     "ava": "^0.19.1",
-    "graceful-fs": "^4.1.11",
     "ts-loader": "^2.1.0",
     "tslint": "^5.4.3",
     "typescript": "^2.3.4"
