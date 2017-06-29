@@ -37,7 +37,7 @@
   },
   "ava": {
     "files": [
-      "dist/__tests__/**/*.js"
+      "lib/__tests__/**/*.js"
     ],
     "concurrency": 5,
     "powerAssert": true
