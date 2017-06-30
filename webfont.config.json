@@ -1,0 +1,6 @@
+{
+  "src": "./img/*.svg",
+  "pwd": "./img",
+  "fontName": "originalFont",
+  "dist": "./fonts"
+}

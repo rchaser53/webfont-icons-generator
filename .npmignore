@@ -1,7 +1,4 @@
-tslint.json
-font.config.json
-tsconfig.json
-tslint.json
+*.json
 fonts
 img
 scripts

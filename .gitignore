@@ -4,3 +4,5 @@ npm-debug.log*
 lib/**/*.js
 fonts
 .DS_Store
+tsconfig.test.json
+tsconfig.cli.json

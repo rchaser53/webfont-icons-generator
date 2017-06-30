@@ -10,8 +10,10 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "tsc": "tsc -p .",
-    "test": "npm run tsc && ava",
+    "createTsConfig" : "node --harmony scripts/createTsconfig.js",
+    "tsc": "tsc -p ./tsconfig.cli.json",
+    "tscTest": "tsc -p ./tsconfig.test.json",
+    "test": "npm run tscTest && ava",
     "prepare": "npm run tsc && npm run addBinFile",
     "addBinFile": "node scripts/addBinFile.js"
   },

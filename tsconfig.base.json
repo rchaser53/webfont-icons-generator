@@ -10,7 +10,6 @@
 		"strictNullChecks": true,
 		"noUnusedLocals": false,
 		"noEmit": false,
-		"inlineSourceMap": true,
 		"noImplicitReturns": true,
 		"noImplicitThis": true,
 		"forceConsistentCasingInFileNames": true,
