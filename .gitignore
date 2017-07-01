@@ -1,8 +1,9 @@
-node_modules
-img*
+.DS_Store
 npm-debug.log*
+node_modules
+fixtures/result
+img*
 lib/**/*.js
 fonts
-.DS_Store
 tsconfig.test.json
 tsconfig.cli.json
