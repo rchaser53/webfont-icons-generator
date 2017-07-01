@@ -16,7 +16,7 @@ export interface FontOptions {
 export const createFontInput = (originalFileName: string): FontInput => {
   const splitedNames = originalFileName.split('_')
   return {
-    fontCode: String.fromCharCode(parseInt(splitedNames[0])),
+    fontCode: splitedNames[0],
     fileName: splitedNames[1]
   }
 }
