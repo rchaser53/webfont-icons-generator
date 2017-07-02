@@ -6,6 +6,11 @@ import * as ArgParse from 'argparse'
 import * as AppRootDir from 'app-root-dir'
 const rootDir = AppRootDir.get()
 
+export interface ArgumentConfig {
+  commands: string[],
+  help: string
+}
+
 export interface FontConfig {
   src: string,
   fontName: string,
@@ -42,9 +47,9 @@ export const createDistDirectory = (distPath: string): Promise<{}> => {
   })
 }
 
-export const addArgument = (parser, argumentTuples: [string, string][]) => {
-  argumentTuples.forEach((argumentTuple) => {
-    parser.addArgument(argumentTuple)
+export const addArgument = (parser, argumentConfigs: ArgumentConfig[]): void => {
+  argumentConfigs.forEach(({commands, help}) => {
+    parser.addArgument(commands, { help })
   })
 }
 
@@ -102,10 +107,10 @@ export const divideAbsolutePath = (relativePath: string): AbsoluteFilePathData =
 
 export const createArgOptions = (argParser): ArgOptions => {
   addArgument(argParser, [
-    [ '-c', '--config'],
-    [ '-d', '--dist'],
-    [ '-f', '--fontName'],
-    [ '-s', '--src'],
+    { commands: [ '-c', '--config'], help: 'config json file path'},
+    { commands: [ '-d', '--dist'], help: 'output directory'},
+    { commands: [ '-f', '--fontName'], help: 'create webfont name and file name'},
+    { commands: [ '-s', '--src'], help: 'imput svg files directory'},
   ])
   const args = argParser.parseArgs()
 
