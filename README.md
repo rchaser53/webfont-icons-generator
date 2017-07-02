@@ -12,7 +12,6 @@ like below
 ``` font.config.json
 {
   "src": "./img/*.svg",
-  "pwd": "./img",
   "fontName": "originalFont",
   "dist": "./fonts"
 }

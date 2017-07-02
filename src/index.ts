@@ -18,6 +18,8 @@ export const entryCli = async (config: string): Promise<void> => {
     const { src, fontName, dist } = await getConfigData(config)
     const files = await getFiles(argSrc || src)
 
+    if (files.length === 0) throw new Error('no svg files are found')
+    const { pwd } = divideAbsolutePath(files[0])
 
     const originalFileNames = files.map((file) => {
       const {
