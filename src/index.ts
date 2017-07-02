@@ -2,30 +2,26 @@ import * as ArgParse from 'argparse'
 
 import createFonts from './createFonts'
 import {
-  addArgument,
-  createDistDirectory,
+  createArgOptions,
   getConfigData,
   getFiles,
-  divideAbsolutePath
+  createDistDirectory,
+  divideAbsolutePath,
 } from './utils'
 
-const parser = new ArgParse.ArgumentParser({})
-
-addArgument(parser, [
-  [ '-c', '--config']
-])
-
-const args = parser.parseArgs()
-const config = (args.c || args.config)
+const {
+  argSrc, argDist, argFontName, argConfig
+} = createArgOptions(new ArgParse.ArgumentParser({}))
 
 export const entryCli = async (config: string): Promise<void> => {
   try {
-    const { pwd, src, fontName, dist } = await getConfigData(config)
+    const { src, fontName, dist } = await getConfigData(config)
+    const files = await getFiles(argSrc || src)
 
-    const files = await getFiles(src)
+
     const originalFileNames = files.map((file) => {
       const {
-        originalFileName, extension, pwd
+        originalFileName, extension
       } = divideAbsolutePath(file)
 
       // TODO convert other extension
@@ -33,10 +29,13 @@ export const entryCli = async (config: string): Promise<void> => {
       return originalFileName
     })
 
-    await createDistDirectory(dist)
+    await createDistDirectory(argDist || dist)
 
     await createFonts({
-      originalFileNames, pwd, fontName, dist
+      originalFileNames,
+      pwd,
+      fontName: argFontName || fontName,
+      dist: argDist || dist
     })
 
   } catch (err) {
@@ -44,7 +43,7 @@ export const entryCli = async (config: string): Promise<void> => {
   }
 }
 
-entryCli(config)
+entryCli(argConfig)
   .catch((err) => {
     console.error(err)
   })

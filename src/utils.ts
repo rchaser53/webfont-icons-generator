@@ -1,8 +1,9 @@
 import * as fs from 'graceful-fs'
 import * as glob from 'glob'
 import * as path from 'path'
-import * as AppRootDir from 'app-root-dir'
+import * as ArgParse from 'argparse'
 
+import * as AppRootDir from 'app-root-dir'
 const rootDir = AppRootDir.get()
 
 export interface FontConfig {
@@ -83,4 +84,21 @@ export const divideAbsolutePath = (relativePath: string): AbsoluteFilePathData =
   return {
     pwd, originalFileName, extension
   }
+}
+
+export const createArgOptions = (argParser) => {
+  addArgument(argParser, [
+    [ '-c', '--config'],
+    [ '-d', '--dist'],
+    [ '-f', '--fontName'],
+    [ '-s', '--src'],
+  ])
+  const args = argParser.parseArgs()
+
+ return {
+  argConfig: (args.c || args.config),
+  argDist: (args.d || args.dist),
+  argFontName: (args.f || args.fontName),
+  argSrc: (args.s || args.src),
+ }
 }
