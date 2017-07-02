@@ -7,17 +7,18 @@ import {
   getFiles,
   createDistDirectory,
   divideAbsolutePath,
+  ArgOptions
 } from './utils'
 
-const {
-  argSrc, argDist, argFontName, argConfig
-} = createArgOptions(new ArgParse.ArgumentParser({}))
+const argOptions = createArgOptions(new ArgParse.ArgumentParser({}))
 
-export const entryCli = async (config: string): Promise<void> => {
+export const entryCli = async (config: ArgOptions): Promise<void> => {
   try {
-    const { src, fontName, dist } = await getConfigData(config)
-    const files = await getFiles(argSrc || src)
+      const {
+        src, dist, fontName
+      } = await getConfigData(config)
 
+    const files = await getFiles(src)
     if (files.length === 0) throw new Error('no svg files are found')
     const { pwd } = divideAbsolutePath(files[0])
 
@@ -31,13 +32,11 @@ export const entryCli = async (config: string): Promise<void> => {
       return originalFileName
     })
 
-    await createDistDirectory(argDist || dist)
+    await createDistDirectory(dist)
 
     await createFonts({
-      originalFileNames,
-      pwd,
-      fontName: argFontName || fontName,
-      dist: argDist || dist
+      originalFileNames, pwd,
+      fontName, dist
     })
 
   } catch (err) {
@@ -45,7 +44,7 @@ export const entryCli = async (config: string): Promise<void> => {
   }
 }
 
-entryCli(argConfig)
+entryCli(argOptions)
   .catch((err) => {
     console.error(err)
   })

@@ -8,7 +8,6 @@ const rootDir = AppRootDir.get()
 
 export interface FontConfig {
   src: string,
-  pwd: string,
   fontName: string,
   dist: string
 }
@@ -17,6 +16,13 @@ export interface AbsoluteFilePathData {
   pwd: string,
   originalFileName: string,
   extension: string
+}
+
+export interface ArgOptions {
+  config: string | null,
+  dist: string | null,
+  fontName: string | null,
+  src: string | null,
 }
 
 export const createDistDirectory = (distPath: string): Promise<{}> => {
@@ -42,10 +48,18 @@ export const addArgument = (parser, argumentTuples: [string, string][]) => {
   })
 }
 
-export const getConfigData = (configPath: string): Promise<FontConfig> => {
-  // TODO null cannot use default parameter, so need to reimplement
-  const actualPath = (configPath === null) ? './font.config.json' : configPath
+export const getConfigData = (argOptions: ArgOptions): Promise<FontConfig> => {
+  const {
+    src, dist, fontName, config
+  } = argOptions
+
+  const actualPath = (config === null) ? './font.config.json' : config
   return new Promise((resolve, reject) => {
+    if (src && dist && fontName) {
+      resolve({src, dist, fontName})
+      return
+    }
+
     fs.readFile(path.resolve(rootDir, actualPath), 'utf8', (err, data) => {
       if (err) {
         reject(err)
@@ -86,7 +100,7 @@ export const divideAbsolutePath = (relativePath: string): AbsoluteFilePathData =
   }
 }
 
-export const createArgOptions = (argParser) => {
+export const createArgOptions = (argParser): ArgOptions => {
   addArgument(argParser, [
     [ '-c', '--config'],
     [ '-d', '--dist'],
@@ -96,9 +110,9 @@ export const createArgOptions = (argParser) => {
   const args = argParser.parseArgs()
 
  return {
-  argConfig: (args.c || args.config),
-  argDist: (args.d || args.dist),
-  argFontName: (args.f || args.fontName),
-  argSrc: (args.s || args.src),
+  config: (args.c || args.config),
+  dist: (args.d || args.dist),
+  fontName: (args.f || args.fontName),
+  src: (args.s || args.src),
  }
 }
