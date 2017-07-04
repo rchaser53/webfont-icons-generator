@@ -34,6 +34,10 @@ export default (options: FontOptions): Promise<{}> => {
                         }
                       })
 
+    if (fs.existsSync(`${dist}/${fontName}Icon.svg`) === false) {
+      fs.mkdirSync(dist)
+    }
+
     fontStream.pipe(fs.createWriteStream(`${dist}/${fontName}Icon.svg`))
       .on('finish', () => {
         resolve()
