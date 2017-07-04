@@ -9,7 +9,7 @@
 
 if you want to use this svg picture as webfont icon,
 
-<img src="./img/001_picture.svg" alt="" title="cat paws" style='width:150px;height:150px;' />
+<img src="./img/001_picture.png" alt="" title="github doesn't support svg so this is a png file" style='width:150px;height:150px;' />
 
 use webfont-icon-generator.
 
