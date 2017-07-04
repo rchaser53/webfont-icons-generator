@@ -1,4 +1,8 @@
 # fontIconPlayground
+
+[![Build Status](https://travis-ci.org/dtan4/terraforming.svg?branch=master)](https://travis-ci.org/dtan4/terraforming)
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+
 ## setup
 
   you need only install webfont-icons-generator.
