@@ -8,7 +8,8 @@ const rootDir = AppRootDir.get()
 
 export interface ArgumentConfig {
   commands: string[],
-  help: string
+  help: string,
+  defaultValue?: string
 }
 
 export interface FontConfig {
@@ -48,8 +49,8 @@ export const createDistDirectory = (distPath: string): Promise<{}> => {
 }
 
 export const addArgument = (parser, argumentConfigs: ArgumentConfig[]): void => {
-  argumentConfigs.forEach(({commands, help}) => {
-    parser.addArgument(commands, { help })
+  argumentConfigs.forEach(({commands, help, defaultValue}) => {
+    parser.addArgument(commands, { help, defaultValue})
   })
 }
 
@@ -58,14 +59,13 @@ export const getConfigData = (argOptions: ArgOptions): Promise<FontConfig> => {
     src, dist, fontName, config
   } = argOptions
 
-  const actualPath = (config === null) ? './font.config.json' : config
   return new Promise((resolve, reject) => {
     if (src && dist && fontName) {
       resolve({src, dist, fontName})
       return
     }
 
-    fs.readFile(path.resolve(rootDir, actualPath), 'utf8', (err, data) => {
+    fs.readFile(path.resolve(rootDir, config), 'utf8', (err, data) => {
       if (err) {
         reject(err)
       } else {
@@ -107,7 +107,10 @@ export const divideAbsolutePath = (relativePath: string): AbsoluteFilePathData =
 
 export const createArgOptions = (argParser): ArgOptions => {
   addArgument(argParser, [
-    { commands: [ '-c', '--config'], help: 'config json file path'},
+    {
+      commands: [ '-c', '--config'], help: 'config json file path',
+      defaultValue: path.resolve(rootDir, './font.config.json')
+    },
     { commands: [ '-d', '--dist'], help: 'output directory'},
     { commands: [ '-f', '--fontName'], help: 'create webfont name and file name'},
     { commands: [ '-s', '--src'], help: 'imput svg files directory'},
